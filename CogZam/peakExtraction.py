@@ -154,7 +154,36 @@ def local_peak_locations(data_2d: np.ndarray, neighborhood: np.ndarray, amp_min:
     return _peaks(data_2d, nbrhd_row_offsets, nbrhd_col_offsets, amp_min=amp_min)
 
 def peak_extract(samples, sampling_rate, *, amp_threshold=0.75, neighborhood_rank=2, neighborhood_connectivity=1, neighborhood_iterations=20):
-	time = np.arange(len(samples)) / sampling_rate
+	
+    """
+    Extracts peaks from a spectrogram created from the sample data.
+    
+    Parameters
+    ----------
+    samples : numpy.ndarray
+        Array of audio samples
+	
+	sampling_rate : int
+		The sampling rate of the audio samples
+        
+    amp_threshold : float
+        All amplitudes at and below this value are excluded from being local 
+        peaks.
+
+	neighborhood_rank : int
+
+	neighborhood_connectivity : int
+
+	neighborhood_iterations : int
+    
+    Returns
+    -------
+    List[Tuple[int, int]]
+        (row, col) index pair for each local peak location, returned
+        in column-major ordering.
+    """
+    
+    time = np.arange(len(samples)) / sampling_rate
 
 	N = len(samples)
 	T = N / sampling_rate
