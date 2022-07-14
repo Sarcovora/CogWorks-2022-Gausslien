@@ -1,4 +1,4 @@
-# CogWorks 2022 Song Recognition Capstone
+# CogWorks 2022 Gausslien Team
 
 The basics of creating an installable Python package.
 
