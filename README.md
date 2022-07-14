@@ -1,6 +1,12 @@
-# CogWorks 2022 Gausslien Team
+# CogWorks 2022 Gausslien Audio Capstone
 
-The basics of creating an installable Python package.
+## CogZam File Order
+1. recordingtoarray.py
+2. peakExtraction.py
+3. getFingerprints.py
+
+
+## The basics of creating an installable Python package.
 
 To install this package first activate the appropriate conda environment, then, in the same directory as `setup.py` run the command:
 
