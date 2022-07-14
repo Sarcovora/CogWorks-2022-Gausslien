@@ -1,1 +1,1 @@
-# CogWorks 2022 Song Recognition Capstone
+# CogWorks 2022 Gausslien Team
