@@ -28,6 +28,6 @@ def userinput():
             samples, rate = micRecord()
             break
         print("Invalid input. Try again.")
-    print(rate)
+    # print(rate)
     
     return samples, rate

@@ -1,14 +1,17 @@
 README.md
 setup.py
 CogZam/__init__.py
+CogZam/database_interface.py
 CogZam/getFingerprints.py
 CogZam/long_to_short.py
 CogZam/main.py
 CogZam/peakExtraction.py
 CogZam/query_database.py
 CogZam/recordingtoarray.py
+CogZam/song_query.py
 CogZam/store_fingersprints.py
 CogZam/tally_results.py
+CogZam/updateDatabaseWithOriginals.py
 CogZam.egg-info/PKG-INFO
 CogZam.egg-info/SOURCES.txt
 CogZam.egg-info/dependency_links.txt
