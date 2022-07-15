@@ -25,6 +25,7 @@ def ecdf(data):
     x = np.sort(data)
     return x, y
 
+@njit
 def _peaks(
     data_2d: np.ndarray, nbrhd_row_offsets: np.ndarray, nbrhd_col_offsets: np.ndarray, amp_min: float
 ) -> List[Tuple[int, int]]:
@@ -153,6 +154,12 @@ def local_peak_locations(data_2d: np.ndarray, neighborhood: np.ndarray, amp_min:
 
     return _peaks(data_2d, nbrhd_row_offsets, nbrhd_col_offsets, amp_min=amp_min)
 
+def find_min_amp(spectrogram, amp_threshold):
+    log_S = np.log(spectrogram).ravel()  # flattened array
+    ind = round(len(log_S) * amp_threshold)
+    cutoff_log_amplitude = np.partition(log_S, ind)[ind]
+    return cutoff_log_amplitude
+
 def peak_extract(samples, sampling_rate, *, amp_threshold=0.75, neighborhood_rank=2, neighborhood_connectivity=1, neighborhood_iterations=20):
 	
     """
@@ -185,20 +192,20 @@ def peak_extract(samples, sampling_rate, *, amp_threshold=0.75, neighborhood_ran
     
     time = np.arange(len(samples)) / sampling_rate
 
-	N = len(samples)
-	T = N / sampling_rate
+	# N = len(samples)
+	# T = N / sampling_rate
 
-	ck = np.fft.rfft(samples)
-	ak = np.abs(ck) / N
+	# ck = np.fft.rfft(samples)
+	# ak = np.abs(ck) / N
 
-	ak[1 : (-1 if N % 2 == 0 else None)] *= 2
+	# ak[1 : (-1 if N % 2 == 0 else None)] *= 2
 
-	fk = np.arange(len(ak)) / T
+	# fk = np.arange(len(ak)) / T
 
-	base_structure = generate_binary_structure(neighborhood_rank,neighborhood_connectivity)
-	neighborhood = iterate_structure(base_structure, neighborhood_iterations)
+    base_structure = generate_binary_structure(neighborhood_rank,neighborhood_connectivity)
+    neighborhood = iterate_structure(base_structure, neighborhood_iterations)
 
-	spectrogram, freqs, times = mlab.specgram(
+    spectrogram, freqs, times = mlab.specgram(
 		samples,
 		NFFT=4096,
 		Fs=sampling_rate,
@@ -206,10 +213,13 @@ def peak_extract(samples, sampling_rate, *, amp_threshold=0.75, neighborhood_ran
 		noverlap=int(4096 / 2)
 	)
 
-	x, y = ecdf(np.log(spectrogram))
+    spectrogram = np.clip(spectrogram, 10**-20, None)
+    
+    amp_min = find_min_amp(spectrogram, amp_threshold)
+    
+    # log_amp = np.log(spectrogram)
+    # x, y = ecdf(spectrogram)
+    # threshold = x[np.isclose(y, amp_threshold)]
+    # amp_min = threshold[0]
 
-	threshold = x[np.isclose(y, amp_threshold)]
-
-	amp_min = threshold[0]
-
-	return local_peak_locations(spectrogram, neighborhood, amp_min)
+    return local_peak_locations(spectrogram, neighborhood, amp_min)
