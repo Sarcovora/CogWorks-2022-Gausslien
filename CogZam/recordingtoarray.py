@@ -29,6 +29,5 @@ def userinput():
             break
         print("Invalid input. Try again.")
     print(rate)
-    toBeReturned = np.concatenate((np.array([rate]),samples))
     
-    return toBeReturned
+    return samples, rate
