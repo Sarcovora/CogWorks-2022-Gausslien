@@ -7,7 +7,7 @@
 3. getFingerprints (getFingerprints.py)
 4. add_to_database? (database.py?)
 
-### Searching for a Song
+### Searching for a song
 1. long_to_short (long_to_short.py)
 2. userinput (recordingtoarray.py)
 3. peak_extract (peakExtraction.py)
