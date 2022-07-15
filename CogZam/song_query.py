@@ -17,4 +17,4 @@ for f in fingerprints:
 	q_songs.extend(query_database(fp_database, f[0], f[1])) # [(songid, offset), (songid, offset), ...]
 
 
-print((tally_results(tuple(q_songs), min_tally=1, song_database=song_database))) # change min_tally later
+print((tally_results(tuple(q_songs), min_tally=5, song_database=song_database))) # change min_tally later
