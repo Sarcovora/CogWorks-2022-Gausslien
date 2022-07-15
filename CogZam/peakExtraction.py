@@ -192,16 +192,6 @@ def peak_extract(samples, sampling_rate, *, amp_threshold=0.75, neighborhood_ran
     
     time = np.arange(len(samples)) / sampling_rate
 
-	# N = len(samples)
-	# T = N / sampling_rate
-
-	# ck = np.fft.rfft(samples)
-	# ak = np.abs(ck) / N
-
-	# ak[1 : (-1 if N % 2 == 0 else None)] *= 2
-
-	# fk = np.arange(len(ak)) / T
-
     base_structure = generate_binary_structure(neighborhood_rank,neighborhood_connectivity)
     neighborhood = iterate_structure(base_structure, neighborhood_iterations)
 
@@ -216,10 +206,5 @@ def peak_extract(samples, sampling_rate, *, amp_threshold=0.75, neighborhood_ran
     spectrogram = np.clip(spectrogram, 10**-20, None)
     
     amp_min = find_min_amp(spectrogram, amp_threshold)
-    
-    # log_amp = np.log(spectrogram)
-    # x, y = ecdf(spectrogram)
-    # threshold = x[np.isclose(y, amp_threshold)]
-    # amp_min = threshold[0]
 
     return local_peak_locations(spectrogram, neighborhood, amp_min)
