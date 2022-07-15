@@ -22,10 +22,10 @@ def getFingerprints(peakPoints, nfanout=5):
         while i2 < peakCount-1 and i2-i1 < nfanout:
             i2+=1
             
-            f1 = peakPoints[i1][1]
-            f2 = peakPoints[i2][1]
-            dt = peakPoints[i2][0] - peakPoints[i1][0]
-            t = peakPoints[i1][0]
+            f1 = peakPoints[i1][0]
+            f2 = peakPoints[i2][0]
+            dt = peakPoints[i2][1] - peakPoints[i1][1]
+            t = peakPoints[i1][1]
             
             peakpairs.append((f1,f2,dt,t))
     
