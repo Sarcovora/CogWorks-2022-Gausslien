@@ -1,0 +1,12 @@
+README.md
+setup.py
+CogZam/__init__.py
+CogZam/functions_a.py
+CogZam/functions_b.py
+CogZam/getFingerprints.py
+CogZam/peakExtraction.py
+CogZam/recordingtoarray.py
+CogZam.egg-info/PKG-INFO
+CogZam.egg-info/SOURCES.txt
+CogZam.egg-info/dependency_links.txt
+CogZam.egg-info/top_level.txt
