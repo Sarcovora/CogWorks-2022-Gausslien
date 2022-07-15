@@ -1,3 +1,4 @@
+import numpy as np
 def long_to_short(samples:np.array, length:int, num_of_clips = 10, fs = 44100) -> []:
     """"
         Parameters

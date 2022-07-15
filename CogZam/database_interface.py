@@ -39,9 +39,7 @@ def store_song(song_db: dict, song_name: str, artist_name: str, ID: int):
     song_item = [song_name, artist_name]
     if song_item not in song_db.values():
         song_db[ID] = song_item
-    with open("song_database.pkl", mode="wb") as f:
-        pickle.dump(song_db, f)
-    save_song_database(song_db)
+        save_song_database(song_db)
 
 """
 Checks if the given song by the artist is in the song database

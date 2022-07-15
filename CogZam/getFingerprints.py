@@ -27,6 +27,6 @@ def getFingerprints(peakPoints, nfanout=5):
             dt = peakPoints[i2][1] - peakPoints[i1][1]
             t = peakPoints[i1][1]
             
-            peakpairs.append((f1,f2,dt,t))
+            peakpairs.append(((f1,f2,dt),t))
     
     return peakpairs
