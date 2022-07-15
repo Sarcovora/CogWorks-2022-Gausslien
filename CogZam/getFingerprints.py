@@ -10,7 +10,7 @@ def getFingerprints(peakPoints, nfanout=5):
     Returns
     -------
     List[Tuple[int, int, int, int]]
-        T
+        List of peak pairs in the form (fi,fj,dt,ti)
     """
     peakCount = len(peakPoints)
     peakpairs = []
