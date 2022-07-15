@@ -1,24 +1,28 @@
-import random
-
-def long_to_short(samples:np.array, length:int, fs = 44100) -> np.ndarray:
+def long_to_short(samples:np.array, length:int, num_of_clips = 10, fs = 44100) -> []:
     """"
-        Given a long song (60 seconds) returns a random shorten 10 second clip 
-    
         Parameters
         ----------
         samples : numpy.ndarray
             takes samples from getFile(path)
         
         fs = 44100
-            sampling rate in Hz
+            sampling rate 
+            
+        num_of_clips = 10
+            generates a default of 10 random clips
     
         Returns
         -------
-        numpy.ndarray
-            The value of the digital signal at the given times.
+        []
+            A list of random clips with the value of the digital signal at the given times.
         
     """
+    clips = []
     
-    samples_in_length = int(fs*length)
-    rand_num = random.randint(0,len(samples)-samples_in_length)
-    return samples[rand_num:rand_num +samples_in_length]
+    for i in range(num_of_clips):
+        samples_in_length = int(fs*length)
+        rand_num = random.randint(0,len(samples)-samples_in_length)
+        clips.append(samples[rand_num:rand_num +samples_in_length])
+    
+    
+    return clips
