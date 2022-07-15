@@ -1,3 +1,5 @@
+import numpy as np
+
 def getFingerprints(peakPoints, nfanout=5):
     """
     Extract fingerprints from peak points of the form (tm, fm)
