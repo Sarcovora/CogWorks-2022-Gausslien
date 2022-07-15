@@ -1,1 +1,4 @@
-from .functions_a import returns_one
+from .getFingerprints import getFingerprints
+from .long_to_short import long_to_short
+from .peakExtraction import peak_extract
+from .recordingtoarray import userinput
