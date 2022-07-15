@@ -1,9 +1,18 @@
 # CogWorks 2022 Gausslien Audio Capstone
 
-## CogZam File Order
-1. recordingtoarray.py
-2. peakExtraction.py
-3. getFingerprints.py
+## CogZam Function Order
+### Adding to a database
+1. userinput (recordingtoarray.py)
+2. peak_extract (peakExtraction.py)
+3. getFingerprints (getFingerprints.py)
+4. add_to_database? (database.py?)
+
+### Searching for a Song
+1. long_to_short (long_to_short.py)
+2. userinput (recordingtoarray.py)
+3. peak_extract (peakExtraction.py)
+4. getFingerprints (getFingerprints.py)
+5. compare_with_database? (database.py?)
 
 
 ## The basics of creating an installable Python package.
